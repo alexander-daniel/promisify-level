@@ -1,0 +1,10 @@
+{
+  "name": "promisify-level",
+  "version": "0.0.1",
+  "description": "Simple wrapper around leveldb to expose a Promise API",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "level-manifest": "^1.2.0"
+  }
+}
