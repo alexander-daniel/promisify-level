@@ -2,9 +2,14 @@
   "name": "promisify-level",
   "version": "0.0.1",
   "description": "Simple wrapper around leveldb to expose a Promise API",
-  "main": "index.js",
+  "main": "src/index.js",
+  "author": "alexander-daniel",
   "license": "MIT",
   "dependencies": {
     "level-manifest": "^1.2.0"
+  },
+  "repository": {
+    "url": "git@github.com:alexander-daniel/promisify-level.git",
+    "type": "git"
   }
 }

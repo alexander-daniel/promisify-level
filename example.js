@@ -1,12 +1,19 @@
 const level = require('level');
-const db = level('./mydb');
-const wrapDB = require('./index');
-const wrapped = wrapDB(db);
+const promisifyLevelDB = require('./src/index');
 
 async function main() {
-  await wrapped.put('foo', 'bar');
-  const value = await wrapped.get('foo');
-  console.error(value);
+  const db = level('./mydb');
+  const promisifiedDB = promisifyLevelDB(db);
+
+  try {
+
+    await promisifiedDB.put('foo', 'bar');
+    const value = await promisifiedDB.get('foo');
+    console.error(value); // -> 'bar'
+
+  } catch (err) {
+    // handle errors here
+  }
 }
 
 main();
