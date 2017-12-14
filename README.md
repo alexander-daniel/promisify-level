@@ -22,15 +22,35 @@ async function main() {
   const db = level('./mydb');
   const promisifiedDB = promisifyLevelDB(db);
 
+  /*
+   * Use that sweet sweet Promise API for async/await goodness!
+   */
   try {
 
     await promisifiedDB.put('foo', 'bar');
     const value = await promisifiedDB.get('foo');
-    console.error(value); // -> 'bar'
+    console.log(value); // -> 'bar'
 
   } catch (err) {
     // handle errors here
   }
+
+  /*
+   * Or keep it classic and use the callback style API.
+   */
+  promisifiedDB.put('fizz', 'buzz', (err) => {
+    if (err) {
+      // Handle it
+    }
+
+    promisifiedDB.get('fizz', (err, result) => {
+      if (err) {
+        // Handle it
+      }
+
+      console.log(result); // -> 'buzz'
+    })
+  });
 }
 
 main();

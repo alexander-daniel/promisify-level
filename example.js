@@ -9,11 +9,26 @@ async function main() {
 
     await promisifiedDB.put('foo', 'bar');
     const value = await promisifiedDB.get('foo');
-    console.error(value); // -> 'bar'
+    console.log(value); // -> 'bar'
 
   } catch (err) {
     // handle errors here
   }
+
+  // Or be a square and use the classic callback style API
+  promisifiedDB.put('fizz', 'buzz', (err) => {
+    if (err) {
+      // Handle it
+    }
+
+    promisifiedDB.get('fizz', (err, result) => {
+      if (err) {
+        // Handle it
+      }
+
+      console.log(result); // -> 'buzz'
+    })
+  });
 }
 
 main();

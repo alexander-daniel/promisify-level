@@ -1,6 +1,6 @@
 {
   "name": "promisify-level",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Simple wrapper around leveldb to expose a Promise API",
   "main": "src/index.js",
   "author": "alexander-daniel",
